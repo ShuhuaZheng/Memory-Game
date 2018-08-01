@@ -1,7 +1,7 @@
 # Memory Game Project
 
 ## Memory Game Board 
-![Memory Game Board](board.png)
+![Memory Game Board](https://github.com/ShuhuaZheng/Udacity-Front-End-Web-Developer-Nanodegree-Project-Two/blob/master/images/board.png)
 
 
 ## How The Game Works 
