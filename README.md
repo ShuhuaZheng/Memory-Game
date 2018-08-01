@@ -1,7 +1,7 @@
 # Memory Game Project
 
 ## Memory Game Board 
-![Memory Game Board](relative/path/to/images/board.png)
+![Memory Game Board](board.png)
 
 
 ## How The Game Works 
