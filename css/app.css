@@ -21,51 +21,59 @@ body {
 	font-family: 'Handlee', cursive; 	
 }
 
-.container, 
-.container1, 
-.container2 {
+.container {
 	display: flex;
 	justify-content: center; 
 	align-items: center; 
 	flex-direction: column; 
-
 }
 
 .container1.hidden {
-	visibility: hidden !important;
+	visibility: hidden;
 }
 
 h1 {
-	margin-top: 0.2em; 
-	margin-bottom: 0.2em; 
+	text-align: center; 
 	font-weight: 600;  
+	margin-top: 5px; 
+	margin-bottom: 0px;   
 }
 
 /*
  * Styles for the score-panel
  */ 
  .score-panel {
- 	text-align: left; 
- 	width: 345px; 
- 	margin-bottom: 10px; 
+ 	margin-top: -10px; 
+ 	margin-bottom: -5px; 
+ 	text-align: center; 
  	font-weight: 600; 
- 	/*display: inline;*/ 
  }
 
 .score-panel .stars {
+	margin: 0 5px 0 0;
 	padding: 0;
 	color: #ccff33;
 	display: inline-block; 
-	margin: 0 5px 0 0;
+	
 }
 
-.stars li {
+.score-panel .stars li {
 	display: inline-block; 
 	list-style: none; 
 }
 
+.score-panel p {
+	display: inline-block;
+}
+
+.score-panel .timer {
+	display: inline-block;
+	margin-left: 3rem; 
+}
+
 .restart {
-	float: right; 
+	display: inline-block; 
+	margin-left: 3rem; 
 	cursor: pointer; 
 }
 
@@ -144,11 +152,12 @@ h1 {
  * Styles for final-res
  */ 
  .container2 {
- 	visibility: hidden;  
+ 	visibility: hidden; 
+ 	opacity: 0; 
  	position: fixed;
  	left: 160px;
  	top: 40px;
-
+	text-align: center; 
  }
 
  .container2:target {
@@ -156,7 +165,7 @@ h1 {
  	opacity: 1;
  }
 
- .text1 {
+ .container2 h2 {
  	font-size: 80px; 
  	margin-bottom: 0; 
  }
@@ -176,7 +185,7 @@ h1 {
 	color: #E5F720;
 }
 
- .text2 {
+ .text {
  	font-size: 40px;
  	margin-bottom: 0; 
  }
@@ -277,33 +286,49 @@ h1 {
 
 
 /* Media queries */
-@media (max-width: 320px) {
+@media only screen and (max-width: 420px) {
+	h1 {
+		font-weight: 400;
+	}
+	.score-panel {
+		font-size: small; 
+	}
+	
 	.deck {
-		width: 85%;
+		width: 300px;
+		height: 280px;
+		padding: 10px;
 	}
 
 	.deck .card {
-		height: 4.7rem;
-		width: 4.7rem;
+		height: 80px;
+		width: 80px;
 	}
 }
 
-@media (min-width: 768px) {
-	.container {
-		font-size: 22px;
+@media only screen and (min-width: 421px) and (max-width: 600px) {
+	h1 {
+		font-size: 30px; 
+	}
+
+	.score-panel {
+		font-size: 20px;  
 	}
 
 	.deck {
-		width: 660px;
-		height: 680px;
+		width: 360px;
+		height: 480px;
 	}
 
 	.deck .card {
-		height: 125px;
-		width: 125px;
+		width: 80px;
+		height: 80px; 
 	}
 
-	.container2 {
-		width: 80%;
+	.deck .card {
+		padding: 5px;
 	}
 }
+
+
+

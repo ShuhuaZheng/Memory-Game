@@ -74,8 +74,17 @@ function startGame() {
     
     // reset rating
     for (var i= 0; i < stars.length; i++){
-        stars[i].style.color = "#ccff33";
+        stars[i].classList.remove("fa-star-o"); 
+        stars[i].classList.add("fa-star"); 
     }
+
+    //reset timer
+    second = 0;
+    minute = 0; 
+    hour = 0;
+    var timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
 }; 
 
 // open, show and disable cards 
@@ -146,26 +155,58 @@ function moveCounter(){
     moves++;
     counter.innerHTML = moves;
 
+    //start timer on first click
+    if(moves == 1){
+        second = 0;
+        minute = 0; 
+        hour = 0;
+        startTimer();
+    }
+
     // setting rates based on moves
     if (moves > 8 && moves < 12){
         for( i= 0; i < 3; i++){
             if(i > 1){
-                stars[i].style.visibility = "collapse";
+                stars[i].classList.remove("fa-star");
+                stars[i].classList.add("fa-star-o");
             }
         }
     }
     else if (moves > 13){
         for( i= 0; i < 3; i++){
             if(i > 0){
-                stars[i].style.visibility = "collapse";
+                stars[i].classList.remove("fa-star");
+                stars[i].classList.add("fa-star-o");
             }
         }
     }
 }
 
+// @description game timer
+var second = 0, minute = 0; hour = 0;
+var timer = document.querySelector(".timer");
+var interval;
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML = minute+"mins "+second+"secs";
+        second++;
+        if(second == 60){
+            minute++;
+            second=0;
+        }
+        if(minute == 60){
+            hour++;
+            minute = 0;
+        }
+    },1000);
+}
+
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 16){ 
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+
         // hide the h1 title, score panel and deck board
         gamePart.classList.add("hidden"); 
 
@@ -178,6 +219,7 @@ function congratulations(){
         //showing move, rating, time on modal
         document.getElementById("final-move").innerHTML = moves;
         document.getElementById("star-rating").innerHTML = starRating;
+        document.getElementById("total-time").innerHTML = finalTime; 
 
         //closeicon on modal
         closeModal();
